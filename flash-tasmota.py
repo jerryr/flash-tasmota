@@ -30,6 +30,8 @@ class MDNSListener:
             condition.notify()
         finally:
             condition.release()
+    def update_service(self, zeroconf, type, name):
+      pass
 
 class HTTPHandlerOne(BaseHTTPRequestHandler):
     
@@ -98,7 +100,7 @@ if __name__ == "__main__":
     zeroconf = Zeroconf()
     listener = MDNSListener()
     browser = ServiceBrowser(zeroconf, "_ewelink._tcp.local.", listener)
-
+    print("looking for _ewelink._tcp.local devices")
     try:
         while True:
             condition.acquire()
